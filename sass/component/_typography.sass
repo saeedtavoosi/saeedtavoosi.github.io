@@ -1,0 +1,100 @@
+// Author: Saeed Tavoosi <tavoosi.saeed@gmail.com>
+
+// **************************************************************************
+// Defining fonts
+// IranSans is main project font
+// **************************************************************************
++font-face("Bariol-bold", font-files("bariol_bold-webfont.ttf"))
++font-face("Bariol", font-files("bariol_regular-webfont.ttf"))
+
+
+// **************************************************************************
+// Typography variables
+// **************************************************************************
+$header-sizes: ("h1": 24, "h2": 20, "h3": 19, "h4": 18, "h5": 17, "h6": 16)
+
+
+// **************************************************************************
+// Typography style
+// **************************************************************************
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td
+  margin: 0
+  padding: 0
+
+
+// Headings
+// *************************
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: $bodyFontFamilyBold
+  //font-weight: bold
+  font-style: normal
+  color: $black
+  margin: 0
+
+  // Heading sizes
+  // '$header-sizes' defined above on 'Typography variables' section
+  @each $header, $font-size in $header-sizes
+    #{$header}
+      +rem(font-size, $font-size)
+      +rem(line-height, $font-size * 1.5)
+
+
+// Paragraph
+// *************************
+p
+  +rem(font-size, 12px)
+  +rem(line-height, 24px)
+  color: $tuatara
+  font-family: $bodyFontFamilyRegular
+
+// Links
+// *************************
+a
+  text-decoration: none
+  line-height: inherit
+  cursor: pointer
+  img
+    border: 0
+
+
+
+// **************************************************************************
+// alignment classes
+// Use for alight your text
+// for example
+// <h2 class="text-left">sample</h2>
+// **************************************************************************
+@each $align in left, right, center, justify
+  .align-#{$align}
+    text-align: $align
+
+
+// **************************************************************************
+// Use to remove the bullets from an unordered list
+// **************************************************************************
+.no-bullet
+  margin-right: 0
+  list-style: none

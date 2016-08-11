@@ -1,0 +1,181 @@
+// Author: Saeed Tavoosi <tavoosi.saeed@gmail.com>
+
+// **************************************************************************
+// Shorthand mixin for offset positioning
+// @param {Length} $t stand for 'top'    [null] - Top offset
+// @param {Length} $r stand for 'right'  [null] - Right offset
+// @param {Length} $b stand for 'bottom' [null] - Bottom offset
+// @param {Length} $l stand for 'left'   [null] - Left offset
+// **************************************************************************
+=absolute($t: null, $r: null, $b: null, $l: null)
+  position: absolute
+  +rem(top, $t)
+  +rem(right, $r)
+  +rem(bottom, $b)
+  +rem(left, $l)
+
+// **************************************************************************
+// Shorthand mixin for relative positioning
+// @param {Length} $t stand for 'top'    [null] - Top offset
+// @param {Length} $r stand for 'right'  [null] - Right offset
+// @param {Length} $b stand for 'bottom' [null] - Bottom offset
+// @param {Length} $l stand for 'left'   [null] - Left offset
+// **************************************************************************
+=relative($t: null, $r: null, $b: null, $l: null)
+  position: relative
+  +rem(top, $t)
+  +rem(right, $r)
+  +rem(bottom, $b)
+  +rem(left, $l)
+
+// **************************************************************************
+// Shorthand mixin for fixed positioning
+// @param {Length} $t stand for 'top'    [null] - Top offset
+// @param {Length} $r stand for 'right'  [null] - Right offset
+// @param {Length} $b stand for 'bottom' [null] - Bottom offset
+// @param {Length} $l stand for 'left'   [null] - Left offset
+// **************************************************************************
+=fixed($t: null, $r: null, $b: null, $l: null)
+  position: fixed
+  +rem(top, $t)
+  +rem(right, $r)
+  +rem(bottom, $b)
+  +rem(left, $l)
+
+// **************************************************************************
+// Shorthand for floating to right & left
+// **************************************************************************
+=left
+  float: left
+
+=right
+  float: right
+
+// **************************************************************************
+// Shorthand for displays
+// **************************************************************************
+=block
+  display: block
+
+=inlineBlock
+  display: inline-block
+
+=table
+  display: table
+
+=tableCell
+  display: table-cell
+
+=tableRow
+  display: table-row
+
+=none
+  display: none
+
+//===============================================
+// clearfix
+//===============================================
+=clearfix
+  &:before,
+  &:after
+    display: table
+    content: ""
+    line-height: 0
+
+  &:after
+    clear: both
+
+//===============================================
+// font
+//===============================================
+=baseFontFamily
+  font-family: $baseFontFamily
+
+=accentFontFamily
+  font-family: $accentFontFamily
+
+=fontShorthand($size, $lineHeight, $color, $weight)
+  font-size: $size
+  font-weight: $weight
+  line-height: $lineHeight
+  color: $color
+
+=baseFont($size, $lineHeight, $color, $weight: 300)
+  +baseFontFamily
+
+  +fontShorthand($size, $lineHeight, $color, $weight)
+
+=accentFont($size, $lineHeight, $color, $weight: 200)
+  +accentFontFamily
+
+  +fontShorthand($size, $lineHeight, $weight, $color)
+
+//===============================================
+// size
+//===============================================
+=size($width, $height:'')
+  @if $height != ''
+    +rem(width, $width)
+    +rem(height, $height)
+  @else
+    +rem(width, $width)
+    +rem(height, $width)
+
+=square($size)
+  +size($size, $size)
+
+//===============================================
+// CSS3
+//===============================================
+=user-select($user-select)
+  -webkit-user-select: $user-select
+  -moz-user-select: $user-select
+  -ms-user-select: $user-select
+  -o-user-select: $user-select
+  user-select: $user-select
+
+=box-sizing($boxmodel)
+  -webkit-box-sizing: $boxmodel
+  -moz-box-sizing: $boxmodel
+  box-sizing: $boxmodel
+
+// Webkit-style focus
+// ------------------
+=tab-focus
+  outline: none
+
+//===============================================
+// selection
+//===============================================
+=selection($color, $background-color)
+  ::-moz-selection
+    color: $color
+    background: $background-color
+
+  ::selection
+    color: $color
+    background: $background-color
+
+//===============================================
+// placeholder
+//===============================================
+=placeholder($color, $size)
+  &:-moz-placeholder
+    font-family: $baseFontFamily
+    font-size: $size
+    color: $color
+
+  &::-moz-placeholder
+    font-family: $baseFontFamily
+    font-size: $size
+    color: $color
+
+  &:-ms-input-placeholder
+    font-family: $baseFontFamily
+    font-size: $size
+    color: $color
+
+  &::-webkit-input-placeholder
+    font-family: $baseFontFamily
+    font-size: $size
+    color: $color

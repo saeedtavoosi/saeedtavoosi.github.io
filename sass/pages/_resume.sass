@@ -1,0 +1,265 @@
+// **************************************************************************
+// General
+// **************************************************************************
+body
+  background: $white-smoke
+  overflow: auto
+  margin: 0
+  padding: 0
+  font-family: $bodyFontFamilyRegular
+  @media screen and (max-width: $containerWidth)
+    background: $white
+
+// Paragraph
+p
+  color: $green
+  +rem(font-size, 15px)
+  +rem(line-height, 18px)
+
+  &.large-text
+    +rem(font-size, 20px)
+    +rem(line-height, 30px)
+    @media screen and (max-width: 330px)
+      +rem(font-size, 18px)
+
+  b
+    font-family: $bodyFontFamilyBold
+
+a
+  $linkColor: $purple //#918FC0
+  color: $linkColor
+  +transition(color 0.2s ease)
+  &:hover
+    color: darken($linkColor, 10%)
+    text-decoration: underline
+
+
+.has-separator:before
+  content: '—'
+  +rem(margin, 0 8px)
+  @media screen and (max-width: 330px)
+    +rem(margin, 0 4px)
+
+
+.highlight
+  font-family: $bodyFontFamilyBold
+  color: $blue
+
+
+.space
+  +rem(padding, 0 100px)
+
+  @media screen and (max-width: $containerWidth)
+    +rem(padding, 0 $gridGutter)
+
+
+// **************************************************************************
+// container
+// **************************************************************************
+.container
+  background-color: $white
+  max-width: $containerWidth
+
+  @media screen and (min-width: $containerWidth)
+    +rem(padding, $gridGutter)
+    +rem(margin, $gridGutter auto)
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12)
+    +transition(box-shadow 0.218s ease-in)
+
+    &:hover
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 8px 15px rgba(0,0,0,0.30)
+
+
+.full-height
+  height: calc(100vh - #{3 * $gridGutter})
+  +rem(min-height, 600px)
+
+
+
+// **************************************************************************
+// Section Title
+// **************************************************************************
+.section-title
+  color: $red
+  +rem(font-size, 18px)
+  +rem(letter-spacing, 2px)
+  text-align: center
+  +rem(margin-top, 100px)
+  +rem(margin-bottom, 50px)
+  text-transform: uppercase
+  +relative
+
+  &:before,
+  &:after
+    +inlineBlock
+    content: '••'
+    +rem(margin, 0 5px)
+
+
+.last-update
+  +block
+  text-align: center
+  color: $aluminum
+  +rem(font-size, 12px)
+  +rem(letter-spacing, 2px)
+  +rem(margin-bottom, 50px)
+
+// **************************************************************************
+// Intro Section
+// **************************************************************************
+.intro
+  +relative()
+  background: $lime
+  *
+    white-space: nowrap
+    color: $teal
+  h4
+    font-family: $bodyFontFamilyRegular
+
+  .wrapper
+    +absolute($t:50%, $l:50%)
+    +transform(translate(-50%,-50%))
+
+.me
+  background-image: url('../images/me.svg')
+  +size(200px)
+  background-position: center
+  background-repeat: no-repeat
+  +rem(margin, 120px auto)
+  @media screen and (max-width: $containerWidth)
+    +rem(margin, 50px auto)
+    +transform(scale(0.7))
+
+  &:before
+    background-image: url('../images/me-around.svg')
+    content: ''
+    +block
+    +size(350px)
+    +absolute($t:50%, $l:50%)
+    +transform(translate(-48%,-45%))
+
+
+
+// **************************************************************************
+// Design Philosophy
+// **************************************************************************
+.design-philosophy
+  +rem(margin, 200px 0)
+
+
+
+// **************************************************************************
+// Experiences
+// **************************************************************************
+.experience
+  margin: 0 auto
+
+  + .experience
+    +rem(margin-top, 50px)
+
+
+.company,
+.project
+  +inlineBlock
+  color: $blue
+  font-weight: bold
+  +rem(font-size, 20px)
+  +rem(margin-bottom, 10px)
+
+  &:hover
+    a
+      opacity: 1
+
+  a
+    opacity: 0
+    font-family: $bodyFontFamilyRegular
+    +transition(opacity 0.218s ease-in)
+    +rem(font-size, 12px)
+    +rem(margin-left, 10px)
+
+
+.project
+  +block
+
+
+.position
+  color: $yellow
+  +rem(font-size, 13px)
+  text-transform: uppercase
+  &:last-child
+    +rem(margin-bottom, 8px)
+
+
+.responsibilities
+  +rem(margin, 6px 20px 12px)
+  color: $blueGrey
+  +rem(font-size, 15px)
+  +rem(line-height, 18px)
+  list-style: none
+  +relative
+  li:before
+    color: $yellow
+    content: '•'
+    +absolute($l:-14px)
+
+
+.description
+  +rem(margin-top, 1px)
+
+  + .position
+    +rem(margin-top, 10px)
+
+
+.time,
+.company-link,
+.project-status
+  +inlineBlock
+  color: #999
+  +rem(font-size, 12px)
+  letter-spacing: 1px
+
+
+.company-link
+  +inlineBlock
+  color: #999
+  +rem(font-size, 12px)
+  letter-spacing: 1px
+  &:hover
+    color: darken(#999, 10%)
+
+
+// **************************************************************************
+// Portfolio
+// **************************************************************************
+.portfolio
+  +rem(margin-top, 100px)
+  +rem(padding, 2 * $gridGutter 0)
+  a
+    +rem(margin, 0 $gridGutter)
+    text-decoration: none !important
+
+  i
+    color: $aluminum
+    +transition(color 0.2s ease)
+
+  .icon-behance:hover
+    color: $behance
+  .icon-dribbble:hover
+    color: $dribbble
+  .icon-instagram:hover
+    color: $instagram
+  .icon-linkedIn:hover
+    color: $linkedin
+  .icon-telegram:hover
+    color: $telegram
+
+// **************************************************************************
+// Selection
+// **************************************************************************
+::-moz-selection
+  background: $yellow
+  color: $jet
+
+::selection
+  background: $yellow
+  color: $jet

@@ -1,0 +1,66 @@
+// Author: Saeed Tavoosi <tavoosi.saeed@gmail.com>
+
+// **************************************************************************
+// Grid style
+// **************************************************************************
+// general style of a row
+// *************************
+.row
+  width: 100%
+  margin: 0 auto
+  +clearfix
+  &.collapse
+    >.col
+      &:last-of-type
+        padding-left: 0 !important
+      &:first-of-type
+        padding-right: 0 !important
+
+// general style of a column
+// *************************
+.col
+  +block
+  box-sizing: border-box
+  float: right
+  +rem(padding, 0 $gridGutter)
+  //font-size: $bodyFontSize
+  vertical-align: top
+
+  &.noPadding
+    padding: 0 !important
+
+// **************************************************************************
+// Grid Mixin
+// **************************************************************************
+// a general mixin for creating a row on stylesheet
+// ****************************************************
+=row
+  font-size: 0
+
+// a general mixin for creating a column on stylesheet
+// $col: represent the wide of your column
+// $sum: represent total cont of columns
+// if this is last column or first, set this property to
+// 'last' or 'first'
+// ****************************************************
+=col($col, $sum, $position: middel, $gap: $gridGutter, $align: top)
+  width: percentage($col/$sum)
+  vertical-align: $align
+  +rem(padding, 0 $gap)
+  font-size: $bodyFontSize
+  @if $position == last
+    padding-left: 0
+  @else if $position == first
+    padding-right: 0
+
+// a mixin for calculating width of columns
+// ****************************************************
+=colWide($col, $sum)
+  width: percentage($col/$sum)
+
+// a mixin for generating columns
+// ****************************************************
+@each $colWide in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12
+  $sum: 12
+  .wide#{$colWide}
+    +colWide($colWide, $sum)
