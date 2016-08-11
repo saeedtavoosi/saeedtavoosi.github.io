@@ -1,1 +1,8 @@
+# file system
 .DS_Store
+
+# pycharm
+.idea/
+
+# SASS
+.sass-cashe/
