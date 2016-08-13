@@ -129,6 +129,14 @@ a
     +absolute($t:50%, $l:50%)
     +transform(translate(-50%,-50%))
 
+  a
+    +rem(font-size, 10px)
+    +rem(letter-spacing, 2px)
+    +transition(letter-spacing 0.2s)
+    &:hover
+      text-decoration: none
+      color: inherit
+      +rem(letter-spacing, 3px)
 .me
   background-image: url('../images/me.svg')
   +size(200px)
