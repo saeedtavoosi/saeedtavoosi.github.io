@@ -191,11 +191,12 @@ a
       opacity: 1
 
   a
-    opacity: 0
     font-family: $bodyFontFamilyRegular
     +transition(opacity 0.218s ease-in)
     +rem(font-size, 12px)
     +rem(margin-left, 10px)
+    @media screen and (min-width: $containerWidth)
+      opacity: 0
 
 
 .project
